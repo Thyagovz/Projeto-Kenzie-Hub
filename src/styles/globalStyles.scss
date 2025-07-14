@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 :root {
   --color-primary: #ff577f;
   --color-primary-focus: #ff427f;
@@ -9,5 +11,12 @@
   --gray-3: #212529;
   --gray-4: #121214;
 
-  --font-family: "Inter" , sans-serif;
+  --font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--gray-4);
+  font-family: var(--font-family);
+  line-height: 150%;
+  color: var(--gray-0);
 }
