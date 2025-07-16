@@ -1,3 +1,5 @@
 export const DashboardPage = () => {
-  return;
+  return (
+    <main></main>
+  );
 };

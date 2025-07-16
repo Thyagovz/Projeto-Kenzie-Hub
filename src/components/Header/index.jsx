@@ -1,11 +1,11 @@
-import logo from "../../../assets/mainLogo.svg";
+import logo from "../../assets/mainLogo.svg";
 
 export const Header = () => {
   return (
     <header>
-      <div>
+      <div className="container">
         <div>
-          <img src={logo} alt="logo kenzie hub" />
+          <img src={logo} alt="Logo Kenzie Hub" />
           <button>Sair</button>
         </div>
       </div>
