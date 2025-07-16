@@ -1,12 +1,21 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../Input";
+import { registerFormSchema } from "./registerForm.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Select } from "../Select";
 
 export const RegisterForm = () => {
   const onSubmit = (e) => {
     console.log(e);
   };
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(registerFormSchema),
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -14,49 +23,64 @@ export const RegisterForm = () => {
         label={"Nome"}
         type="text"
         placeholder="Digite aqui seu nome"
+        error={errors.name}
         {...register("name")}
       />
       <Input
         label={"Email"}
         type="email"
         placeholder="Digite aqui seu email"
+        error={errors.email}
         {...register("email")}
       />
       <Input
         label={"Senha"}
         type="password"
         placeholder="Digite aqui sua senha"
+        error={errors.password}
         {...register("password")}
       />
       <Input
         label={"Confirmar Senha"}
         type="password"
         placeholder="Confirme sua senha"
-        {...register("confirme")}
+        error={errors.confirmPassword}
+        {...register("confirmPassword")}
       />
       <Input
         label={"Bio"}
         type=""
         placeholder="Fale sobre você"
-        {...register("sobre")}
+        error={errors.sobre}
+        {...register("bio")}
       />
       <Input
         label={"Contato"}
         type=""
         placeholder="Opção de contato"
-        {...register("contato")}
+        error={errors.contato}
+        {...register("contact")}
       />
-      <select name="Selecionar módulo" id=""></select>
+      <Select
+        label="Selecionar módulo"
+        register={register("coursemodule")}
+        error={errors.coursemodule}
+      >
+        <option value="Primeiro módulo (Introdução ao Frontend)">
+          Primeiro módulo (Introdução ao Frontend)
+        </option>
+        <option value="Segundo módulo (Frontend Avançado)">
+          Segundo módulo (Frontend Avançado)
+        </option>
+        <option value="Terceiro módulo (Introdução ao Backend)">
+          Terceiro módulo (Introdução ao Backend)
+        </option>
+        <option value="Quarto módulo (Backend Avançado)">
+          Quarto módulo (Backend Avançado)
+        </option>
+      </Select>
 
       <button type="submit">Cadastrar</button>
-
-      {/* <input type="text" placeholder="Digite aqui seu nome" />
-      <input type="email" placeholder="Digite aqui seu email" />
-      <input type="password" placeholder="Digite aqui uma senha" />
-      <input type="" placeholder="" />
-      <input type="" placeholder="" />
-      <input type="" placeholder="" />
-      <input type="" placeholder="" /> */}
     </form>
   );
 };
