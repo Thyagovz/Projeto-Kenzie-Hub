@@ -20,7 +20,7 @@ export const registerFormSchema = z
       .min(8, "É necessário confirmar a senha"),
     bio: z.string().nonempty("Campo obrigatório"),
     contact: z.string().nonempty("Campo obrigatório"),
-    coursemodule: z.string().nonempty("Campo obrigatório"),
+    course_module: z.string().nonempty("Campo obrigatório"),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "As Senhas não correspondem.",

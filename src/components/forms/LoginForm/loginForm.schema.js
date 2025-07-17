@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const loginFormSchema = z.object({
-  name: z.string().nonempty("Campo obrigatório"),
   email: z
     .string()
     .nonempty("Campo obrigatório")

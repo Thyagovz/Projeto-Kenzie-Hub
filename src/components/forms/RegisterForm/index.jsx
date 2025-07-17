@@ -3,10 +3,29 @@ import { Input } from "../Input";
 import { registerFormSchema } from "./registerForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Select } from "../Select";
+import { api } from "../../../services/api";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-export const RegisterForm = () => {
-  const onSubmit = (e) => {
-    console.log(e);
+export const RegisterForm = ({ setUser }) => {
+  const onSubmit = (formData) => {
+    createUser(formData);
+    console.log(formData);
+  };
+  const navigate = useNavigate();
+
+  const createUser = async (payload) => {
+    const { confirmPassword, ...rest } = payload;
+    try {
+      const { data } = await api.post("/users", rest);
+      setUser(data.user);
+
+      localStorage.setItem("@kenziehub:token", data.token);
+      toast.success("Usuário cadastrado com sucesso!");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const {
@@ -51,20 +70,20 @@ export const RegisterForm = () => {
         label={"Bio"}
         type=""
         placeholder="Fale sobre você"
-        error={errors.sobre}
+        error={errors.bio}
         {...register("bio")}
       />
       <Input
         label={"Contato"}
         type=""
         placeholder="Opção de contato"
-        error={errors.contato}
+        error={errors.contact}
         {...register("contact")}
       />
       <Select
         label="Selecionar módulo"
-        register={register("coursemodule")}
-        error={errors.coursemodule}
+        register={register("course_module")}
+        error={errors.course_module}
       >
         <option value="Primeiro módulo (Introdução ao Frontend)">
           Primeiro módulo (Introdução ao Frontend)

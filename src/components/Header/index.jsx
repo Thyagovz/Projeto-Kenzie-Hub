@@ -8,6 +8,10 @@ export const Header = () => {
           <img src={logo} alt="Logo Kenzie Hub" />
           <button>Sair</button>
         </div>
+        <div>
+            <p></p>
+            <p></p>
+        </div>
       </div>
     </header>
   );
