@@ -1,8 +1,8 @@
 import { DefaultTemplate } from "../../components/DefaultTemplate";
 
-export const DashboardPage = ({ user, logout }) => {
+export const DashboardPage = () => {
   return (
-    <DefaultTemplate user={user} logout={logout}>
+    <DefaultTemplate>
       <main></main>
     </DefaultTemplate>
   );

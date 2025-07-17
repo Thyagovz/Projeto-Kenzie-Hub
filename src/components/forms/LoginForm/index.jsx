@@ -2,29 +2,20 @@ import { useForm } from "react-hook-form";
 import { Input } from "../Input";
 import { loginFormSchema } from "./loginForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../../services/api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
+import { Link } from "react-router-dom";
+import { InputPassword } from "../InputPassword";
 
-export const LoginForm = ({ setUser }) => {
+export const LoginForm = () => {
+  const { userLogin } = useContext(UserContext);
+
   const onSubmit = (formData) => {
     console.log(formData);
-    login(formData);
+    userLogin(formData);
   };
-  const navigate = useNavigate();
-  const login = async (payload) => {
-    try {
-      const { data } = await api.post("/sessions", payload);
-      setUser(data.user);
 
-      localStorage.setItem("@kenziehub:token", data.token);
-      toast.success("Login realizado com sucesso!");
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error("Email ou senha não correspondem.");
-    }
-  };
   const {
     register,
     handleSubmit,
@@ -46,9 +37,8 @@ export const LoginForm = ({ setUser }) => {
         error={errors.email}
         {...register("email")}
       />
-      <Input
+      <InputPassword
         label={"Senha"}
-        type="password"
         placeholder="Digite aqui sua senha"
         error={errors.password}
         {...register("password")}
@@ -57,6 +47,12 @@ export const LoginForm = ({ setUser }) => {
       <button type="submit" className="buttonPrimary">
         Entrar
       </button>
+      <Link to="/register" className="headline bold center gray">
+        Ainda não possui uma conta?
+      </Link>
+      <Link to="/register" className="buttonPrimary disabled">
+        Cadastre-se
+      </Link>
     </form>
   );
 };

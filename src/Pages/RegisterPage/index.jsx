@@ -3,7 +3,7 @@ import { RegisterForm } from "../../components/forms/RegisterForm";
 import styles from "./style.module.scss";
 import logo from "../../assets/logo.svg";
 
-export const RegisterPage = ({ setUser }) => {
+export const RegisterPage = () => {
   return (
     <main className="pageBox">
       <div className="container small">
@@ -13,7 +13,7 @@ export const RegisterPage = ({ setUser }) => {
             Voltar
           </Link>
         </div>
-        <RegisterForm setUser={setUser} />
+        <RegisterForm />
       </div>
     </main>
   );

@@ -2,7 +2,7 @@ import { LoginForm } from "../../components/forms/LoginForm";
 import styles from "./style.module.scss";
 import logo from "../../assets/logo.svg";
 
-export const LoginPage = ({ setUser }) => {
+export const LoginPage = () => {
   return (
     <main className="pageBox">
       <div className="container small">
@@ -10,7 +10,7 @@ export const LoginPage = ({ setUser }) => {
           <img src={logo} alt="kenzie hub logo" />
         </div>
       </div>
-      <LoginForm setUser={setUser} />
+      <LoginForm />
     </main>
   );
 };

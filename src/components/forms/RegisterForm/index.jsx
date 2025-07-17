@@ -3,30 +3,16 @@ import { Input } from "../Input";
 import { registerFormSchema } from "./registerForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Select } from "../Select";
-import { api } from "../../../services/api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
+import { InputPassword } from "../InputPassword";
 
-export const RegisterForm = ({ setUser }) => {
+export const RegisterForm = () => {
+  const { userRegister } = useContext(UserContext);
+
   const onSubmit = (formData) => {
-    createUser(formData);
-    console.log(formData);
-  };
-  const navigate = useNavigate();
-
-  const createUser = async (payload) => {
-    const { confirmPassword, ...rest } = payload;
-    try {
-      const { data } = await api.post("/users", rest);
-      setUser(data.user);
-
-      localStorage.setItem("@kenziehub:token", data.token);
-      toast.success("Usuário cadastrado com sucesso!");
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error(error.message);
-    }
+    userRegister(formData);
   };
 
   const {
@@ -58,16 +44,14 @@ export const RegisterForm = ({ setUser }) => {
         error={errors.email}
         {...register("email")}
       />
-      <Input
+      <InputPassword
         label={"Senha"}
-        type="password"
         placeholder="Digite aqui sua senha"
         error={errors.password}
         {...register("password")}
       />
-      <Input
+      <InputPassword
         label={"Confirmar Senha"}
-        type="password"
         placeholder="Confirme sua senha"
         error={errors.confirmPassword}
         {...register("confirmPassword")}

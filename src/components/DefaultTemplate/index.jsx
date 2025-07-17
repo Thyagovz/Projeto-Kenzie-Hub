@@ -1,9 +1,9 @@
 import { Header } from "../Header";
 
-export const DefaultTemplate = ({ user, logout, children }) => {
+export const DefaultTemplate = ({ children }) => {
   return (
     <>
-      <Header user={user} logout={logout} />
+      <Header />
       {children}
     </>
   );

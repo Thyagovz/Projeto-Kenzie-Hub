@@ -1,0 +1,26 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+input:disabled {
+  opacity: 0.2;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.inputPassword {
+  position: relative;
+
+  button {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    font-size: 1.25rem;
+    color: var(--gray-1);
+  }
+}
