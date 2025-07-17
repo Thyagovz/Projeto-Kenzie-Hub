@@ -1,0 +1,53 @@
+%allButtons {
+  height: 48px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  color: var(--gray-0);
+  transition: all 150ms ease-in-out;
+}
+
+.buttonPrimary {
+  @extend %allButtons;
+  background-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-focus);
+  }
+
+  &.negative {
+    background-color: var(--color-primary-negative);
+  }
+
+  &.negative:hover {
+    background-color: var(--color-primary-focus);
+  }
+
+  &.disabled {
+    background-color: var(--gray-1);
+  }
+
+  &.disabled:hover {
+    background-color: var(--gray-2);
+  }
+}
+
+.buttonMedium {
+  @extend %allButtons;
+  height: 2.25rem;
+  background-color: var(--gray-3);
+
+  &:hover {
+    background-color: var(--gray-2);
+  }
+
+  &.thin {
+    padding: 0 11px !important;
+  }
+}

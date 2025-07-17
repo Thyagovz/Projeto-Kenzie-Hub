@@ -1,0 +1,14 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+input:disabled {
+  opacity: 0.2;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}

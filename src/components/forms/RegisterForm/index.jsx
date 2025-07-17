@@ -6,6 +6,7 @@ import { Select } from "../Select";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import styles from "./style.module.scss";
 
 export const RegisterForm = ({ setUser }) => {
   const onSubmit = (formData) => {
@@ -37,7 +38,12 @@ export const RegisterForm = ({ setUser }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.titleText}>
+        <h2 className="title 1 center">Crie sua conta</h2>
+        <p className="headline gray center">Rápido e grátis, vamos nessa!</p>
+        <div></div>
+      </div>
       <Input
         label={"Nome"}
         type="text"
@@ -68,14 +74,14 @@ export const RegisterForm = ({ setUser }) => {
       />
       <Input
         label={"Bio"}
-        type=""
+        type="text"
         placeholder="Fale sobre você"
         error={errors.bio}
         {...register("bio")}
       />
       <Input
         label={"Contato"}
-        type=""
+        type="text"
         placeholder="Opção de contato"
         error={errors.contact}
         {...register("contact")}
@@ -99,7 +105,9 @@ export const RegisterForm = ({ setUser }) => {
         </option>
       </Select>
 
-      <button type="submit">Cadastrar</button>
+      <button type="submit" className="buttonPrimary negative">
+        Cadastrar
+      </button>
     </form>
   );
 };

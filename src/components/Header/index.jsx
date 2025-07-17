@@ -1,16 +1,19 @@
 import logo from "../../assets/mainLogo.svg";
+import styles from "./style.module.scss";
 
-export const Header = () => {
+export const Header = ({ user, logout }) => {
   return (
-    <header>
+    <header className={styles.headerBox}>
       <div className="container">
-        <div>
-          <img src={logo} alt="Logo Kenzie Hub" />
-          <button>Sair</button>
+        <div className={styles.headerElements}>
+          <img className={styles.logo} src={logo} alt="Logo Kenzie Hub" />
+          <button className="buttonMedium" onClick={logout}>
+            Sair
+          </button>
         </div>
         <div>
-            <p></p>
-            <p></p>
+          <p>{user?.name}</p>
+          <p>{user?.course_module}</p>
         </div>
       </div>
     </header>

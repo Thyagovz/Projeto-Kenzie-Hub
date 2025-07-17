@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import styles from "./style.module.scss";
 
 export const LoginForm = ({ setUser }) => {
   const onSubmit = (formData) => {
@@ -33,7 +34,11 @@ export const LoginForm = ({ setUser }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.titleText}>
+        <h2 className="title 1 center">Login</h2>
+        <div></div>
+      </div>
       <Input
         label={"Email"}
         type="email"
@@ -49,7 +54,9 @@ export const LoginForm = ({ setUser }) => {
         {...register("password")}
       />
 
-      <button type="submit">Entrar</button>
+      <button type="submit" className="buttonPrimary">
+        Entrar
+      </button>
     </form>
   );
 };
