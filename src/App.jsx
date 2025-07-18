@@ -1,20 +1,13 @@
-import { ToastContainer } from "react-toastify";
-import { RouterMain } from "./routes/RouterMain";
 import "react-toastify/dist/ReactToastify.css";
+import { RouterMain } from "./routes/RouterMain/routerMain.jsx";
 import "./styles/index.scss";
-import Loading from "./assets/loadingIcon.svg";
-import { useContext } from "react";
-import { UserContext } from "./providers/UserContext";
+import { Loading } from "./components/Loading/loading";
+import { useUserContext } from "./providers/UserContext/userContext.jsx";
 
-function App() {
-  const { loading } = useContext(UserContext);
+const App = () => {
+  const { loadingPage } = useUserContext();
 
-  return (
-    <>
-      <ToastContainer theme="dark" />
-      {loading ? <img src={Loading} alt="Carregando..." /> : <RouterMain />}
-    </>
-  );
-}
+  return <>{loadingPage ? <Loading /> : <RouterMain />}</>;
+};
 
 export default App;

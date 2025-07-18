@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
+  --toastify-color-dark: #343b41;
+  --toastify-color-success: #3fe864;
+  --toastify-color-error: #e83f5b;
+
   --color-primary: #ff577f;
   --color-primary-focus: #ff427f;
   --color-primary-negative: #59323f;
@@ -15,8 +19,7 @@
 }
 
 body {
-  background-color: #868e96;
-  // background-color: var(--gray-4);
+  background-color: var(--gray-4);
   font-family: var(--font-family);
   line-height: 150%;
   color: var(--gray-0);

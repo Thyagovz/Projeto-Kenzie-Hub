@@ -1,0 +1,13 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 90vh;
+  gap: 1.875rem;
+
+  & > img {
+    width: 200px;
+  }
+}
