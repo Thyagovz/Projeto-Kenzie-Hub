@@ -3,12 +3,8 @@ import styles from "./style.module.scss";
 import { useTechContext } from "../../../providers/TechContext/techContext";
 
 export const TechCard = ({ tech }) => {
-  const {
-    setEditingTech,
-    deleteTaskRequest,
-    currentId,
-    setCurrentId,
-  } = useTechContext();
+  const { setEditingTech, deleteTaskRequest, currentId, setCurrentId } =
+    useTechContext();
 
   const handleEditButtonClick = (tech) => {
     setCurrentId(tech.id);

@@ -22,9 +22,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  background-color: var(--gray-2) ;
-  color: var(--gray-0) ;
-  font-family: var(--font-family) ;
-  box-shadow: 0 0 0 1000px var(--gray-2) inset t;
+  -webkit-text-fill-color: var(--gray-0);
+  box-shadow: 0 0 0 1000px var(--gray-2) inset;
   transition: background-color 5000s ease-in-out 0s;
+  font-family: var(--font-family);
 }

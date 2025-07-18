@@ -18,10 +18,7 @@ export const ErrorPage = () => {
               Ir para dashboard 🏃🏻‍♂️
             </Link>
           ) : (
-            <Link
-              to="/"
-              className="paragraph gray"
-            >
+            <Link to="/" className="paragraph gray">
               Ir para página inicial 🏃🏻‍♂️
             </Link>
           )}
