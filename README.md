@@ -1,4 +1,4 @@
-# Projeto Vite + React + SCSS — Gerenciador de Tecnologias
+# Projeto **Kenzie Hub** Vite + React + SCSS — Gerenciador de Tecnologias
 
 Este projeto foi desenvolvido com foco em desempenho, escalabilidade e experiência do usuário. Utiliza Vite como bundler, React para interface, SCSS para estilização modular e diversas bibliotecas para facilitar a autenticação, gerenciamento de estado e interatividade.
 
