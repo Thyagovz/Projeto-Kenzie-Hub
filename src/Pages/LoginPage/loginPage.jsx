@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Form } from "../../components/forms/Form/form";
-import { Input } from "../../components/forms/Input/input";
+import { Form } from "../../components/forms/Form/form.jsx";
+import { Input } from "../../components/forms/Input/input.jsx";
 import { useForm } from "react-hook-form";
-import { loginFormSchema } from "./loginFormSchema";
+import { loginFormSchema } from "./loginFormSchema.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../../assets/mainLogo.svg";
 import styles from "./style.module.scss";
-import { InputPassword } from "../../components/forms/InputPassword/inputPassword";
+import { InputPassword } from "../../components/forms/InputPassword/inputPassword.jsx";
 import { useState } from "react";
 import { useUserContext } from "../../providers/UserContext/userContext.jsx";
 

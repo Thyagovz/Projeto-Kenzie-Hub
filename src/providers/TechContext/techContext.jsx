@@ -3,6 +3,7 @@ import { api } from "../../services/api";
 import { useUserContext } from "../UserContext/userContext";
 import { toast } from "react-toastify";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const TechContext = createContext({});
 
 export const TechProvider = ({ children }) => {
@@ -103,4 +104,5 @@ export const TechProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTechContext = () => useContext(TechContext);

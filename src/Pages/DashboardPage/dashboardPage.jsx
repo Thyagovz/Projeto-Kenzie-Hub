@@ -3,7 +3,7 @@ import { EditTechModal } from "../../components/modal/EditTechModal/editTechModa
 import { TechListSection } from "../../components/sections/TechListSection/techListSection.jsx";
 import { UserSection } from "../../components/sections/UserSection/userSection.jsx";
 import { useTechContext } from "../../providers/TechContext/techContext.jsx";
-import { DefaultTemplate } from "../DefaultTemplate/defaultTemplate";
+import { DefaultTemplate } from "../DefaultTemplate/defaultTemplate.jsx";
 
 export const DashboardPage = () => {
   const { createTech, editingTech } = useTechContext();

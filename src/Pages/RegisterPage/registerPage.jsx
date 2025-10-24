@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
-import { Form } from "../../components/forms/Form/form";
-import { Input } from "../../components/forms/Input/input";
-import { Select } from "../../components/forms/Select/select";
+import { Form } from "../../components/forms/Form/form.jsx";
+import { Input } from "../../components/forms/Input/input.jsx";
+import { Select } from "../../components/forms/Select/select.jsx";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerFormSchema } from "./registerFormSchema";
+import { registerFormSchema } from "./registerFormSchema.js";
 import { Link } from "react-router-dom";
 import styles from "./style.module.scss";
 import logo from "../../assets/logo.svg";
-import { InputPassword } from "../../components/forms/InputPassword/inputPassword";
+import { InputPassword } from "../../components/forms/InputPassword/inputPassword.jsx";
 import { useState } from "react";
 import { useUserContext } from "../../providers/UserContext/userContext.jsx";
 

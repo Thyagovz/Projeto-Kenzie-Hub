@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "../../pages/LoginPage/loginPage.jsx";
-import { RegisterPage } from "../../pages/RegisterPage/registerPage";
-import { DashboardPage } from "../../pages/DashboardPage/dashboardPage";
-import { ErrorPage } from "../../pages/ErrorPage/errorPage";
+import { RegisterPage } from "../../pages/RegisterPage/registerPage.jsx";
+import { DashboardPage } from "../../pages/DashboardPage/dashboardPage.jsx";
+import { ErrorPage } from "../../pages/ErrorPage/errorPage.jsx";
 import { PrivateRoutes } from "../PrivateRoutes/privateRoutes";
 import { PublicRoutes } from "../PublicRoutes/publicRoutes";
 
