@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { LoginPage } from "../../pages/LoginPage/loginPage";
+import { LoginPage } from "../../pages/LoginPage/loginPage.jsx";
 import { RegisterPage } from "../../pages/RegisterPage/registerPage";
 import { DashboardPage } from "../../pages/DashboardPage/dashboardPage";
 import { ErrorPage } from "../../pages/ErrorPage/errorPage";
