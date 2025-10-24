@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
@@ -7,47 +8,52 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loadingPage, setLoadingPage] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(true);
   const [techList, setTechList] = useState([]);
 
   const navigate = useNavigate();
 
-  const pathname = window.location.pathname;
-
   useEffect(() => {
     const token = localStorage.getItem("@kenzieHub:token");
+
     const loadUser = async () => {
+      if (!token) {
+        setLoadingPage(false);
+        return;
+      }
+
       try {
         setLoadingPage(true);
         const { data } = await api.get("/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
+
         setUser(data);
-        navigate(pathname);
-        setTechList(data.techs);
-      } catch (error) {
-        console.log(error);
+        setTechList(data.techs || []);
+      } catch {
         localStorage.removeItem("@kenzieHub:token");
+        setUser(null);
+        setTechList([]);
+        navigate("/");
       } finally {
         setLoadingPage(false);
       }
     };
-    if (token) {
-      loadUser();
-    }
-  }, []);
+
+    loadUser();
+  }, [navigate]);
 
   const userRegisterRequest = async (formData, setLoading) => {
     try {
       setLoading(true);
-      const { data } = await api.post("/users", formData);
-      navigate("/");
+      await api.post("/users", formData);
       toast.success("Cadastro realizado com sucesso");
+      navigate("/");
     } catch (error) {
-      if (error.response?.data.message === "Email already exists") {
+      if (error.response?.data?.message === "Email already exists") {
         toast.error("Este email já foi cadastrado");
+      } else {
+        toast.error("Erro ao cadastrar usuário");
       }
     } finally {
       setLoading(false);
@@ -58,15 +64,20 @@ export const UserProvider = ({ children }) => {
     try {
       setLoading(true);
       const { data } = await api.post("/sessions", formData);
+
       setUser(data.user);
       localStorage.setItem("@kenzieHub:token", data.token);
+      setTechList(data.user.techs || []);
+      toast.success("Login realizado com sucesso");
       navigate("/dashboard");
     } catch (error) {
       if (
-        error.response?.data.message ===
+        error.response?.data?.message ===
         "Incorrect email / password combination"
       ) {
         toast.error("Email ou senha não correspondem");
+      } else {
+        toast.error("Erro ao realizar login");
       }
     } finally {
       setLoading(false);
@@ -76,6 +87,7 @@ export const UserProvider = ({ children }) => {
   const handleLogoutButtonClick = () => {
     localStorage.removeItem("@kenzieHub:token");
     setUser(null);
+    setTechList([]);
     navigate("/");
   };
 
